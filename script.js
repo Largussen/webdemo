@@ -5,7 +5,7 @@ let bookedSlots = [];
 
 window.onload = function() {
     initDatePicker();
-    AOS.init({ duration: 800, once: true, disable: 'mobile' }); // Mobilde animasyonları kapattım, daha hızlı çalışır
+    AOS.init({ duration: 800, once: true, });
     initCounters();
     
     console.log("Sunucuya bağlanılıyor...");
@@ -177,3 +177,4 @@ function sendWhatsapp() {
     var url = "https://wa.me/" + PHONE_NUMBER + "?text=" + encodeURIComponent(message);
     window.open(url, '_blank').focus();
 }
+
