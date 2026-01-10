@@ -3,7 +3,15 @@ const PHONE_NUMBER = "905526707279";
 
 let bookedSlots = [];
 
+
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
 window.onload = function() {
+    // Sayfa yüklendiğinde zorla en tepeye git
+    window.scrollTo(0, 0);
+
     initDatePicker();
     AOS.init({ duration: 800, once: true, });
     initCounters();
@@ -43,7 +51,7 @@ function initCounters() {
                     const easeProgress = 1 - Math.pow(1 - progress, 3);
                     const currentNum = Math.floor(easeProgress * target);
                     
-                    if(target === 100) { // Yüzde işareti için
+                    if(target === 100) { 
                          counter.innerText = "%" + currentNum;
                     } else {
                         counter.innerText = currentNum + "+";
@@ -177,4 +185,3 @@ function sendWhatsapp() {
     var url = "https://wa.me/" + PHONE_NUMBER + "?text=" + encodeURIComponent(message);
     window.open(url, '_blank').focus();
 }
-
