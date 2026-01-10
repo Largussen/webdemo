@@ -9,11 +9,23 @@ if ('scrollRestoration' in history) {
 }
 
 window.onload = function() {
-    // Sayfa yüklendiğinde zorla en tepeye git
+    
+    if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname);
+    }
+
+    
     window.scrollTo(0, 0);
 
+    
+    setTimeout(function() {
+        window.scrollTo(0, 0);
+    }, 50);
+
+   
     initDatePicker();
-    AOS.init({ duration: 800, once: true, });
+   
+    AOS.init({ duration: 800, once: true }); 
     initCounters();
     
     console.log("Sunucuya bağlanılıyor...");
