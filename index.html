@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -28,14 +30,15 @@
 
         <ul class="nav-links">
             <li><a href="#home" onclick="toggleMenu()">Ana Sayfa</a></li>
-            <li><a href="#services" onclick="toggleMenu()">Fiyatlar</a></li>
+            <li><a href="#services" onclick="toggleMenu()">Hizmetler</a></li>
+            <li><a href="#stats" onclick="toggleMenu()">Hakkımızda</a></li>
             <li><a href="#gallery" onclick="toggleMenu()">Galeri</a></li>
             <li><a href="#contact" class="nav-btn" onclick="toggleMenu()">Randevu Al</a></li>
         </ul>
     </nav>
 
     <header id="home">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up">
             <h1>Tarzınız, <span>MODEL</span> Farkıyla.</h1>
             <p>Yarım asırlık tecrübe, modern dokunuşlar.</p>
             <a href="#contact" class="btn-main">Randevu Oluştur</a>
@@ -43,100 +46,155 @@
     </header>
 
     <section id="services">
-        <h2>Fiyat Listemiz</h2>
+        <i class="fas fa-cut floating-icon icon-scissors"></i>
+
+        <h2 data-aos="fade-up">Hizmetlerimiz</h2>
         
-        <div class="price-container">
+        <div class="price-container" data-aos="fade-up">
             <div class="price-icon-wrapper">
                 <i class="fas fa-cut"></i>
             </div>
-
-            <div class="price-item">
-                <span class="price-name">Saç Kesimi</span>
-                <span class="price-dots"></span>
-                <span class="price-value">300 ₺</span>
-            </div>
+            
+            <div class="price-item"><span class="price-name">Saç Kesimi</span><span class="price-dots"></span><span class="price-value">300 ₺</span></div>
             <span class="price-sub">Yıkama + Fön Dahil</span>
-
-            <div class="price-item">
-                <span class="price-name">Sakal Tıraşı</span>
-                <span class="price-dots"></span>
-                <span class="price-value">150 ₺</span>
-            </div>
+            
+            <div class="price-item"><span class="price-name">Sakal Tıraşı</span><span class="price-dots"></span><span class="price-value">150 ₺</span></div>
             <span class="price-sub">Sıcak Havlu + Jilet/Makine</span>
-
-            <div class="price-item">
-                <span class="price-name">Saç & Sakal (Full)</span>
-                <span class="price-dots"></span>
-                <span class="price-value">400 ₺</span>
-            </div>
-
-            <div class="price-item">
-                <span class="price-name">Saç Boyama</span>
-                <span class="price-dots"></span>
-                <span class="price-value">750 ₺</span>
-            </div>
+            
+            <div class="price-item"><span class="price-name">Saç & Sakal (Full)</span><span class="price-dots"></span><span class="price-value">400 ₺</span></div>
+            
+            <div class="price-item"><span class="price-name">Saç Boyama</span><span class="price-dots"></span><span class="price-value">750 ₺</span></div>
             <span class="price-sub">Profesyonel Renk Açma & Boya</span>
-
-            <div class="price-item">
-                <span class="price-name">Damat Tıraşı</span>
-                <span class="price-dots"></span>
-                <span class="price-value">1500 ₺</span>
-            </div>
+            
+            <div class="price-item"><span class="price-name">Damat Tıraşı</span><span class="price-dots"></span><span class="price-value">1500 ₺</span></div>
             <span class="price-sub">Özel Cilt Bakımı + Maske + Styling</span>
-
-            <div class="price-item">
-                <span class="price-name">VIP Cilt Bakımı</span>
-                <span class="price-dots"></span>
-                <span class="price-value">350 ₺</span>
-            </div>
+            
+            <div class="price-item"><span class="price-name">VIP Cilt Bakımı</span><span class="price-dots"></span><span class="price-value">350 ₺</span></div>
              <span class="price-sub">Buhar + Siyah Nokta + Kil Maskesi</span>
+            
+            <div class="price-item"><span class="price-name">Çocuk Tıraşı</span><span class="price-dots"></span><span class="price-value">200 ₺</span></div>
+        </div>
+    </section>
 
-            <div class="price-item">
-                <span class="price-name">Çocuk Tıraşı</span>
-                <span class="price-dots"></span>
-                <span class="price-value">200 ₺</span>
+    <section id="stats" data-aos="fade-up">
+        <div class="stats-container">
+            <div class="stat-item">
+                <i class="fas fa-history"></i>
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Yıllık Tecrübe</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-users"></i>
+                <h3 class="counter" data-target="1000">0</h3>
+                <p>Mutlu Müşteri</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <h3 class="counter" data-target="100">0</h3>
+                <p>Müşteri Memnuniyeti</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" data-aos="fade-up">
+        <h2>Müşterilerimiz Ne Diyor?</h2>
+        <div class="testimonial-grid">
+            
+            <div class="testimonial-card">
+                <i class="fas fa-quote-right quote-bg"></i>
+                <div class="testimonial-content">
+                    <p>"Çok güzel ve harikulâde bir mekan.. Içerisinde bulunanların değerliliğiyle kıymet kazanmış dosthane bir yer.."</p>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">MY</div>
+                    <div class="client-details">
+                        <h4>Cafer Demirel</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <i class="fas fa-quote-right quote-bg"></i>
+                <div class="testimonial-content">
+                    <p>"Damat tıraşım için tercih ettim. İlgi alaka, cilt bakımı ve ikramlar harikaydı. Kendinizi özel hissediyorsunuz."</p>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">CE</div>
+                    <div class="client-details">
+                        <h4>Caner Erkin</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <i class="fas fa-quote-right quote-bg"></i>
+                <div class="testimonial-content">
+                    <p>"Dükkan çok temiz ve ferah. Konya'nın en iyisi diyebilirim."</p>
+                </div>
+                <div class="client-info">
+                    <div class="client-avatar">BÖ</div>
+                    <div class="client-details">
+                        <h4>Burak Özçivit</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
             </div>
 
         </div>
     </section>
 
     <section id="gallery">
-        <h2>Atölyemizden</h2>
+        <h2 data-aos="fade-up">Galeri</h2>
         <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600" alt="Berber 1">
-            <img src="https://images.unsplash.com/photo-1512690459411-b9245aed8ad6?w=600" alt="Berber 2">
-            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Berber 3">
-            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=600" alt="Berber 4">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600" alt="Berber 1" data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://images.unsplash.com/photo-1512690459411-b9245aed8ad6?w=600" alt="Berber 2" data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Berber 3" data-aos="zoom-in" data-aos-delay="300">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=600" alt="Berber 4" data-aos="zoom-in" data-aos-delay="400">
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Randevu Alın</h2>
-        <div class="booking-form">
-            
-            <label>İşlem Seçiniz</label>
-            <select id="serviceSelect">
-                <option value="Saç Kesimi">Saç Kesimi</option>
-                <option value="Sakal Tıraşı">Sakal Tıraşı</option>
-                <option value="Saç & Sakal">Saç & Sakal (Full Paket)</option>
-                <option value="VIP Cilt Bakımı">VIP Cilt Bakımı</option>
-                <option value="Damat Tıraşı">Damat Tıraşı</option>
-            </select>
+    <section id="contact" data-aos="fade-in">
+        <i class="fas fa-calendar-check floating-icon icon-calendar"></i>
 
-            <label>Tarih Seçiniz</label>
-            <input type="text" id="dateSelect" placeholder="Sistem Bağlanıyor... ⏳" disabled>
+        <h2>İletişim & Randevu</h2>
+        
+        <div class="contact-container">
+            <div class="map-wrapper">
+                <iframe src="https://maps.google.com/maps?q=Model+Kuaför+Konya+Selçuklu&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Konya, Selçuklu (Merkez)</p>
+                    <p><i class="fas fa-phone"></i> +90 552 670 72 79</p>
+                </div>
+            </div>
 
-            <label>Saat Seçiniz</label>
-            <select id="timeSelect" disabled>
-                <option value="">Önce tarihi seçiniz</option>
-            </select>
+            <div class="booking-form">
+                <label>İşlem Seçiniz</label>
+                <select id="serviceSelect">
+                    <option value="Saç Kesimi">Saç Kesimi</option>
+                    <option value="Sakal Tıraşı">Sakal Tıraşı</option>
+                    <option value="Saç & Sakal">Saç & Sakal (Full Paket)</option>
+                    <option value="VIP Cilt Bakımı">VIP Cilt Bakımı</option>
+                    <option value="Damat Tıraşı">Damat Tıraşı</option>
+                </select>
 
-            <label>Adınız Soyadınız</label>
-            <input type="text" id="customerName" placeholder="İsim Soyisim">
+                <label>Tarih Seçiniz</label>
+                <input type="text" id="dateSelect" placeholder="Sistem Bağlanıyor... ⏳" disabled>
 
-            <button onclick="sendWhatsapp()" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> WhatsApp ile Gönder
-            </button>
+                <label>Saat Seçiniz</label>
+                <select id="timeSelect" disabled>
+                    <option value="">Önce tarihi seçiniz</option>
+                </select>
+
+                <label>Adınız Soyadınız</label>
+                <input type="text" id="customerName" placeholder="İsim Soyisim">
+
+                <button onclick="sendWhatsapp()" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp ile Gönder
+                </button>
+            </div>
         </div>
     </section>
 
@@ -144,6 +202,7 @@
         <p>© 2026 <span>MODEL KUAFÖR</span> - 1975'den Beri Hizmetinizde.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
