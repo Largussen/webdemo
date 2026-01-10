@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -16,120 +15,163 @@
 body { 
     background-color: var(--bg-dark); 
     color: var(--text-light); 
-    line-height: 1.6; 
+    line-height: 1.5; 
     overflow-x: hidden; 
-    
     background-image: radial-gradient(#333 1px, transparent 1px);
     background-size: 30px 30px; 
     background-attachment: fixed;
 }
 
-/* nav */
-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(18, 18, 18, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); }
-.logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
-.logo-sub { font-size: 0.8rem; color: var(--text-light); letter-spacing: 1px; }
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links li a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: 0.3s; }
-.nav-links li a:hover { color: var(--primary); }
-.nav-btn { background: var(--primary); padding: 10px 20px; border-radius: 4px; color: #fff !important; }
-.menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text-light); }
+/* --- NAV --- */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(18, 18, 18, 0.98); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 168, 150, 0.3); height: 70px; }
 
-/* Hero */
+.logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; line-height: 1; }
+.logo-sub { font-size: 0.7rem; color: var(--text-light); letter-spacing: 1px; }
+
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links li a { color: var(--text-light); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+.nav-links li a:hover { color: var(--primary); }
+.nav-btn { background: var(--primary); padding: 8px 18px; border-radius: 4px; color: #fff !important; }
+.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
+
+/* --- HERO --- */
 header { 
     height: 100vh; 
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0, 168, 150, 0.1)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600'); 
-    background-size: cover; 
-    background-position: center; 
+    background: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600') no-repeat center center/cover;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     text-align: center; 
-    margin-top: 70px;
     position: relative;
-   
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    margin-top: 0; /* Nav fixed olduğu için margin-top gerekmez ama padding ile çözeriz */
 }
 
-.hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+/* Karartma katmanı */
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0, 168, 150, 0.2));
+    z-index: 1;
+}
+
+.hero-content { position: relative; z-index: 2; padding: 0 20px; margin-top: 40px; }
+.hero-content h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; line-height: 1.1; }
 .hero-content h1 span { color: var(--primary); }
-.hero-content p { font-size: 1.3rem; color: var(--text-light); margin-bottom: 60px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.9); }
+.hero-content p { font-size: 1.1rem; color: #ddd; margin-bottom: 40px; font-weight: 400; }
 
-.btn-main { background: var(--primary); color: var(--text-light); padding: 15px 40px; text-decoration: none; font-weight: 700; border-radius: 4px; border: 2px solid var(--primary); transition: 0.3s; }
-.btn-main:hover { background: transparent; color: var(--primary); box-shadow: 0 0 15px var(--primary); }
+.btn-main { background: var(--primary); color: var(--text-light); padding: 12px 30px; text-decoration: none; font-weight: 600; border-radius: 4px; border: 2px solid var(--primary); transition: 0.3s; display: inline-block; }
+.btn-main:hover { background: transparent; color: var(--primary); }
 
+/* --- GENEL SECTION --- */
+section { padding: 60px 5%; position: relative; overflow: hidden; }
+h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; text-transform: uppercase; color: #fff; }
+h2::after { content: ''; display: block; width: 60px; height: 3px; background: var(--primary); margin: 10px auto 0; }
 
-section { 
-    padding: 80px 5%; 
-    position: relative; 
-    overflow: hidden; 
-}
-h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; text-transform: uppercase; }
-h2::after { content: ''; display: block; width: 80px; height: 3px; background: var(--primary); margin: 15px auto 0; }
+.floating-icon { position: absolute; z-index: -1; color: var(--primary); opacity: 0.05; pointer-events: none; }
+.icon-scissors { top: 5%; right: -5%; transform: rotate(-20deg); font-size: 15rem; }
+.icon-calendar { bottom: 5%; left: -5%; transform: rotate(15deg); font-size: 15rem; }
 
+/* --- FIYAT LISTESI --- */
+.price-container { max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 40px 30px; border-radius: 12px; border: 1px solid rgba(0,168,150,0.3); position: relative; z-index: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.price-icon-wrapper { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: var(--bg-dark); padding: 15px; border-radius: 50%; border: 2px solid var(--primary); font-size: 1.8rem; color: var(--primary); display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; }
+.price-item { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; }
+.price-name { font-weight: 500; font-size: 1rem; color: #fff; }
+.price-dots { flex-grow: 1; border-bottom: 2px dotted #444; margin: 0 10px 5px 10px; opacity: 0.5; }
+.price-value { font-weight: 700; color: var(--primary); font-size: 1.1rem; min-width: 60px; text-align: right; }
+.price-sub { display: block; font-size: 0.75rem; color: var(--text-gray); margin-top: -12px; margin-bottom: 20px; font-style: italic; }
 
-.floating-icon {
-    position: absolute;
-    z-index: -1; 
-    color: var(--primary);
-    opacity: 0.1; 
-    font-size: 25rem; 
-    pointer-events: none;
-}
-.icon-scissors { top: 10%; right: -5%; transform: rotate(-20deg); }
-.icon-calendar { bottom: 10%; left: -5%; transform: rotate(15deg); font-size: 30rem; }
+/* --- ISTATISTIK --- */
+.stats-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; background: var(--bg-card); padding: 30px; border-radius: 10px; border: 1px solid #333; max-width: 900px; margin: 0 auto; z-index: 1; }
+.stat-item { text-align: center; min-width: 120px; }
+.stat-item i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
+.counter { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.stat-item p { font-size: 0.9rem; color: #aaa; }
 
+/* --- YORUMLAR --- */
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.testimonial-card { background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333; transition: 0.3s; }
+.quote-bg { float: right; font-size: 2rem; color: rgba(255, 255, 255, 0.1); margin-bottom: 10px; }
+.testimonial-content p { font-style: italic; color: #ccc; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.4; clear: both; }
+.client-info { display: flex; align-items: center; gap: 12px; }
+.client-avatar { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 1rem; }
+.client-details h4 { color: #fff; font-size: 0.9rem; margin-bottom: 0; }
+.stars { color: #f1c40f; font-size: 0.8rem; }
 
-/* Fiyatsal */
-.price-container { max-width: 800px; margin: 0 auto; background: var(--bg-card); padding: 50px; border-radius: 15px; border: 2px solid var(--primary); position: relative; z-index: 1; }
-.price-icon-wrapper { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); background: var(--bg-dark); padding: 15px; border-radius: 50%; border: 2px solid var(--primary); font-size: 2.5rem; color: var(--primary); }
-.price-item { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
-.price-dots { flex-grow: 1; border-bottom: 2px dotted var(--text-gray); margin-bottom: 7px; opacity: 0.5; }
-.price-value { font-weight: 800; color: var(--primary); font-size: 1.3rem; }
-.price-sub { display: block; font-size: 0.85rem; color: var(--text-gray); margin-top: -20px; margin-bottom: 25px; }
+/* --- GALERI --- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; transition: 0.3s; filter: grayscale(30%); }
+.gallery-grid img:hover { transform: scale(1.02); filter: grayscale(0%); border: 2px solid var(--primary); }
 
-/* İstatistiksell */
-.stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; background: var(--bg-card); padding: 40px; border-radius: 10px; border: 1px solid var(--primary); text-align: center; max-width: 1000px; margin: 0 auto; z-index: 1; }
-.stat-item { margin: 20px; }
-.stat-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
-.counter { font-size: 2.5rem; font-weight: 800; color: #fff; }
+/* --- ILETISIM --- */
+.contact-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1100px; margin: 0 auto; z-index: 1; }
+.map-wrapper { flex: 1; min-width: 300px; height: auto; border-radius: 10px; overflow: hidden; border: 1px solid var(--primary); display: flex; flex-direction: column; }
+.contact-info { background: var(--bg-card); padding: 15px; text-align: center; color: #fff; font-size: 0.9rem; }
+.contact-info p { margin: 5px 0; }
+.contact-info i { color: var(--primary); margin-right: 8px; }
 
-/* Yorumsall */
-.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-.testimonial-card { background: #1e1e1e; padding: 35px; border-radius: 15px; position: relative; border: 1px solid #333; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-.testimonial-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0, 168, 150, 0.1); }
-.quote-bg { position: absolute; top: 20px; right: 20px; font-size: 5rem; color: rgba(255, 255, 255, 0.03); z-index: 0; }
-.testimonial-content p { font-style: italic; color: #ccc; font-size: 1.05rem; position: relative; z-index: 1; margin-bottom: 25px; }
-.client-info { display: flex; align-items: center; gap: 15px; position: relative; z-index: 1; }
-.client-avatar { width: 50px; height: 50px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 1.2rem; border: 2px solid #fff; }
-.client-details h4 { color: #fff; font-size: 1rem; margin-bottom: 2px; }
-.stars { color: #f1c40f; font-size: 0.9rem; }
+.booking-form { flex: 1; min-width: 300px; background: var(--bg-card); padding: 30px; border-radius: 10px; border: 1px solid #333; }
+.booking-form h3 { text-align: center; margin-bottom: 20px; color: var(--primary); font-size: 1.2rem; }
+.booking-form label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: #bbb; }
+.booking-form input, .booking-form select { width: 100%; padding: 12px; margin-bottom: 15px; background: #252525; border: 1px solid #444; border-radius: 6px; color: #fff; font-size: 0.95rem; outline: none; transition: 0.3s; }
+.booking-form input:focus, .booking-form select:focus { border-color: var(--primary); }
+.booking-form input:disabled, .booking-form select:disabled { background: #1a1a1a; cursor: not-allowed; opacity: 0.7; }
 
-/* Galerisel */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.gallery-grid img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; transition: 0.3s; border: 2px solid transparent; }
-.gallery-grid img:hover { transform: scale(1.02); border-color: var(--primary); }
+/* Form Yan Yana (Tarih - Saat) */
+.form-row { display: flex; gap: 15px; }
+.form-group { flex: 1; }
 
-/* İletişimsel */
-.contact-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; z-index: 1; }
-.map-wrapper { flex: 1; min-width: 300px; border-radius: 10px; overflow: hidden; border: 2px solid var(--primary); display: flex; flex-direction: column; }
-.map-wrapper iframe { flex-grow: 1; min-height: 350px; }
-.contact-info { background: var(--bg-card); padding: 20px; text-align: center; color: #fff; }
-.booking-form { flex: 1; min-width: 300px; background: var(--bg-card); padding: 40px; border-radius: 10px; border: 2px solid var(--primary); }
-.booking-form input, .booking-form select { width: 100%; padding: 15px; margin-bottom: 25px; background: #2a2a2a; border: 2px solid #444; border-radius: 4px; color: #fff; }
-.btn-whatsapp { width: 100%; padding: 18px; background: #25D366; color: white; border: none; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 12px; }
+.btn-whatsapp { width: 100%; padding: 15px; background: #25D366; color: white; border: none; font-weight: 600; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; border-radius: 6px; font-size: 1rem; transition: 0.3s; }
+.btn-whatsapp:hover { background: #1ebe57; transform: translateY(-2px); }
 
-/* Footersal */
-footer { text-align: center; padding: 30px; background: #0a0a0a; color: var(--text-gray); margin-top: 80px; border-top: 2px solid var(--primary); }
+/* --- FOOTER --- */
+footer { text-align: center; padding: 20px; background: #0a0a0a; color: #666; font-size: 0.8rem; margin-top: 60px; border-top: 1px solid #222; }
 
-/* Mobilsel */
+/* ------------------------------------------------ */
+/* --- MOBİL OPTİMİZASYON (En Önemli Kısım) --- */
+/* ------------------------------------------------ */
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .nav-links { position: absolute; top: 70px; left: -100%; width: 100%; height: 100vh; background: rgba(18, 18, 18, 0.98); flex-direction: column; justify-content: center; transition: 0.4s ease; }
-    .nav-links.active { left: 0; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content p { font-size: 1.1rem; margin-bottom: 40px; } 
-    .contact-container { flex-direction: column; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
+    /* Genel Ayarlar */
+    body { background-attachment: scroll; /* Mobilde fixed kasar */ }
+    section { padding: 40px 20px; }
+    h2 { font-size: 1.5rem; margin-bottom: 30px; }
+    
+    /* Nav */
+    .menu-toggle { display: block; z-index: 1001; }
+    nav { padding: 0 20px; justify-content: space-between; }
+    .nav-links { 
+        position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; 
+        background: rgba(10, 10, 10, 0.98); flex-direction: column; 
+        justify-content: center; align-items: center; transition: 0.4s ease; 
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5); padding-top: 60px;
+    }
+    .nav-links.active { right: 0; }
+    .nav-links li { margin: 15px 0; }
+    .nav-links li a { font-size: 1.2rem; }
 
+    /* Hero */
+    header { background-attachment: scroll; height: auto; min-height: 90vh; }
+    .hero-content h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .hero-content p { font-size: 1rem; margin-bottom: 30px; } 
+
+    /* Hizmetler & Fiyat */
+    .price-container { padding: 30px 20px; }
+    .price-name { font-size: 0.9rem; }
+    .price-value { font-size: 1rem; }
+    
+    /* İstatistik */
+    .stats-container { padding: 20px; gap: 15px; }
+    .stat-item { min-width: 45%; }
+    .stat-item i { font-size: 1.5rem; }
+    .counter { font-size: 1.5rem; }
+    
+    /* Galeri */
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .gallery-grid img { height: 150px; } /* Resimler devasa olmasın */
+
+    /* İletişim Formu */
+    .contact-container { flex-direction: column; gap: 20px; }
+    .booking-form { padding: 20px; }
+    .map-wrapper iframe { min-height: 250px; }
+    
+    /* Arka Plan Süsleri */
+    .floating-icon { display: none; /* Mobilde karmaşayı önlemek için gizledim */ }
+}
