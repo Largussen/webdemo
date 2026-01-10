@@ -1,6 +1,4 @@
 /* --- MODEL KUAFÖR TEMASI (Turkuaz & Dark) --- */
-
-/* Google Font (Poppins) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
@@ -13,426 +11,124 @@
     --danger: #ff4d4d; 
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-light); 
+    line-height: 1.6; 
+    overflow-x: hidden; 
+    /* YENİ: Noktalı Desen Arkaplan */
+    background-image: radial-gradient(#333 1px, transparent 1px);
+    background-size: 30px 30px; 
+    background-attachment: fixed;
 }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    line-height: 1.6;
-}
+/* Navigasyon */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(18, 18, 18, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); }
+.logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
+.logo-sub { font-size: 0.8rem; color: var(--text-light); letter-spacing: 1px; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links li a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: 0.3s; }
+.nav-links li a:hover { color: var(--primary); }
+.nav-btn { background: var(--primary); padding: 10px 20px; border-radius: 4px; color: #fff !important; }
+.menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text-light); }
 
-/* --- NAVİGASYON --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: rgba(18, 18, 18, 0.95);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid var(--primary);
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 1;
-}
-
-.logo-sub {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    letter-spacing: 1px;
-    font-weight: 400;
-}
-
-/* Masaüstü Menü Stilleri */
-.nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-links li a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-    font-size: 1rem;
-}
-
-.nav-links li a:hover {
-    color: var(--primary);
-}
-
-.nav-btn {
-    background: var(--primary);
-    padding: 10px 20px;
-    border-radius: 4px;
-    color: #fff !important;
-}
-
-.nav-btn:hover {
-    background: var(--primary-hover);
-}
-
-/* Mobil Menü İkonu (Başlangıçta Gizli) */
-.menu-toggle {
-    display: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--text-light);
-}
-
-/* --- HERO BÖLÜMÜ --- */
-header {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0, 168, 150, 0.2)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 70px; 
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.hero-content h1 span {
-    color: var(--primary); 
-}
-
-.hero-content p {
-    font-size: 1.3rem;
-    color: var(--text-light);
-    margin-bottom: 30px;
-    font-weight: 300;
-}
-
-.btn-main {
-    background: var(--primary);
-    color: var(--text-light);
-    padding: 15px 40px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px;
-    transition: 0.3s;
-    font-size: 1.1rem;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 2px solid var(--primary);
-}
-
-.btn-main:hover {
-    background: transparent;
-    color: var(--primary);
-}
-
-/* --- GENEL BÖLÜM AYARLARI --- */
-section {
-    padding: 80px 5%;
-}
-
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 50px;
-    color: var(--text-light);
-    text-transform: uppercase;
+/* Hero */
+header { 
+    height: 100vh; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0, 168, 150, 0.1)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1600'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    margin-top: 70px;
     position: relative;
+    /* YENİ: Aşağı doğru kararan geçiş efekti */
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: var(--primary);
-    margin: 15px auto 0;
-}
+.hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,0.7); }
+.hero-content h1 span { color: var(--primary); }
+.hero-content p { font-size: 1.3rem; color: var(--text-light); margin-bottom: 60px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.9); }
 
-/* --- FİYAT LİSTESİ --- */
-.price-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: var(--bg-card);
-    padding: 50px;
-    border-radius: 15px;
-    border: 2px solid var(--primary);
-    box-shadow: 0 10px 30px rgba(0, 168, 150, 0.15);
-    position: relative;
-}
+.btn-main { background: var(--primary); color: var(--text-light); padding: 15px 40px; text-decoration: none; font-weight: 700; border-radius: 4px; border: 2px solid var(--primary); transition: 0.3s; }
+.btn-main:hover { background: transparent; color: var(--primary); box-shadow: 0 0 15px var(--primary); }
 
-.price-icon-wrapper {
+/* Genel Bölüm Ayarları */
+section { 
+    padding: 80px 5%; 
+    position: relative; 
+    overflow: hidden; /* İkonlar taşmasın diye */
+}
+h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; text-transform: uppercase; }
+h2::after { content: ''; display: block; width: 80px; height: 3px; background: var(--primary); margin: 15px auto 0; }
+
+/* YENİ: Dekoratif Arkaplan İkonları */
+.floating-icon {
     position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-dark);
-    padding: 15px;
-    border-radius: 50%;
-    border: 2px solid var(--primary);
-}
-
-.price-icon-wrapper i {
-    font-size: 2.5rem;
+    z-index: -1; 
     color: var(--primary);
+    opacity: 0.05; /* Çok silik */
+    font-size: 25rem; 
+    pointer-events: none;
 }
+.icon-scissors { top: 10%; right: -5%; transform: rotate(-20deg); }
+.icon-calendar { bottom: 10%; left: -5%; transform: rotate(15deg); font-size: 30rem; }
 
-.price-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; 
-    margin-bottom: 25px;
-    position: relative;
-}
 
-.price-name {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #fff;
-    background: var(--bg-card); 
-    padding-right: 10px;
-    z-index: 1;
-}
+/* Fiyatlar */
+.price-container { max-width: 800px; margin: 0 auto; background: var(--bg-card); padding: 50px; border-radius: 15px; border: 2px solid var(--primary); position: relative; z-index: 1; }
+.price-icon-wrapper { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); background: var(--bg-dark); padding: 15px; border-radius: 50%; border: 2px solid var(--primary); font-size: 2.5rem; color: var(--primary); }
+.price-item { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
+.price-dots { flex-grow: 1; border-bottom: 2px dotted var(--text-gray); margin-bottom: 7px; opacity: 0.5; }
+.price-value { font-weight: 800; color: var(--primary); font-size: 1.3rem; }
+.price-sub { display: block; font-size: 0.85rem; color: var(--text-gray); margin-top: -20px; margin-bottom: 25px; }
 
-.price-dots {
-    flex-grow: 1;
-    border-bottom: 2px dotted var(--text-gray);
-    margin-bottom: 7px;
-    opacity: 0.5;
-}
+/* İstatistikler */
+.stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; background: var(--bg-card); padding: 40px; border-radius: 10px; border: 1px solid var(--primary); text-align: center; max-width: 1000px; margin: 0 auto; z-index: 1; }
+.stat-item { margin: 20px; }
+.stat-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+.counter { font-size: 2.5rem; font-weight: 800; color: #fff; }
 
-.price-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--primary);
-    background: var(--bg-card);
-    padding-left: 10px;
-    z-index: 1;
-}
+/* Yorumlar */
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.testimonial-card { background: #1e1e1e; padding: 35px; border-radius: 15px; position: relative; border: 1px solid #333; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+.testimonial-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0, 168, 150, 0.1); }
+.quote-bg { position: absolute; top: 20px; right: 20px; font-size: 5rem; color: rgba(255, 255, 255, 0.03); z-index: 0; }
+.testimonial-content p { font-style: italic; color: #ccc; font-size: 1.05rem; position: relative; z-index: 1; margin-bottom: 25px; }
+.client-info { display: flex; align-items: center; gap: 15px; position: relative; z-index: 1; }
+.client-avatar { width: 50px; height: 50px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size: 1.2rem; border: 2px solid #fff; }
+.client-details h4 { color: #fff; font-size: 1rem; margin-bottom: 2px; }
+.stars { color: #f1c40f; font-size: 0.9rem; }
 
-.price-sub {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-gray);
-    margin-top: -20px;
-    margin-bottom: 25px;
-}
+/* Galeri (Hepsi Renkli) */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.gallery-grid img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; transition: 0.3s; border: 2px solid transparent; }
+.gallery-grid img:hover { transform: scale(1.02); border-color: var(--primary); }
 
-/* --- GALERİ --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
+/* İletişim */
+.contact-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; z-index: 1; }
+.map-wrapper { flex: 1; min-width: 300px; border-radius: 10px; overflow: hidden; border: 2px solid var(--primary); display: flex; flex-direction: column; }
+.map-wrapper iframe { flex-grow: 1; min-height: 350px; }
+.contact-info { background: var(--bg-card); padding: 20px; text-align: center; color: #fff; }
+.booking-form { flex: 1; min-width: 300px; background: var(--bg-card); padding: 40px; border-radius: 10px; border: 2px solid var(--primary); }
+.booking-form input, .booking-form select { width: 100%; padding: 15px; margin-bottom: 25px; background: #2a2a2a; border: 2px solid #444; border-radius: 4px; color: #fff; }
+.btn-whatsapp { width: 100%; padding: 18px; background: #25D366; color: white; border: none; font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 12px; }
 
-.gallery-grid img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: 0.3s;
-    filter: grayscale(100%);
-    border: 2px solid transparent;
-}
+/* Footer */
+footer { text-align: center; padding: 30px; background: #0a0a0a; color: var(--text-gray); margin-top: 80px; border-top: 2px solid var(--primary); }
 
-.gallery-grid img:hover {
-    filter: grayscale(0%);
-    border-color: var(--primary);
-    transform: scale(1.02);
-}
-
-/* --- RANDEVU FORMU --- */
-.booking-form {
-    background: var(--bg-card);
-    padding: 50px;
-    border-radius: 10px;
-    max-width: 700px;
-    margin: 0 auto;
-    border: 2px solid var(--primary);
-    box-shadow: 0 0 20px rgba(0, 168, 150, 0.1);
-}
-
-.booking-form label {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--primary);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.booking-form input, 
-.booking-form select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 25px;
-    background: #2a2a2a;
-    border: 2px solid #444;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 1.1rem;
-    outline: none;
-    transition: 0.3s;
-}
-
-.booking-form input:focus, 
-.booking-form select:focus {
-    border-color: var(--primary);
-    background: #333;
-}
-
-.booking-form input:disabled,
-.booking-form select:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    border-color: #444;
-    background: #222;
-}
-
-.btn-whatsapp {
-    width: 100%;
-    padding: 18px;
-    background: #25D366;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    text-transform: uppercase;
-}
-
-.btn-whatsapp:hover {
-    background: #1ebc57;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-}
-
-/* --- FOOTER --- */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #0a0a0a;
-    color: var(--text-gray);
-    font-size: 1rem;
-    margin-top: 80px;
-    border-top: 2px solid var(--primary);
-}
-
-footer span {
-    color: var(--primary);
-    font-weight: 700;
-}
-
-/* =========================================
-   RESPONSIVE (MOBİL) AYARLAR - EN ALT KISIM
-   ========================================= */
+/* Mobil */
 @media (max-width: 768px) {
-    
-    /* Navigasyon - Mobil Menü */
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(18, 18, 18, 0.98);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s ease;
-        gap: 40px;
-        border-top: 1px solid #333;
-    }
-
-    .nav-links.active {
-        left: 0; 
-    }
-
-    .nav-links li a {
-        font-size: 1.5rem;
-    }
-
-    /* Hero */
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    /* Genel Padding */
-    section {
-        padding: 60px 5%;
-    }
-
-    /* Fiyat Listesi */
-    .price-container {
-        padding: 40px 20px;
-    }
-    .price-name {
-        font-size: 1rem;
-        max-width: 60%;
-    }
-    .price-value {
-        font-size: 1.1rem;
-    }
-
-    /* Galeri - Mobilde 2'li Izgara */
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Form */
-    .booking-form {
-        padding: 30px 20px;
-    }
-}
-
-/* Çok Küçük Ekranlar (Telefon Dik) */
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    .logo {
-        font-size: 1.4rem;
-    }
+    .menu-toggle { display: block; }
+    .nav-links { position: absolute; top: 70px; left: -100%; width: 100%; height: 100vh; background: rgba(18, 18, 18, 0.98); flex-direction: column; justify-content: center; transition: 0.4s ease; }
+    .nav-links.active { left: 0; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1.1rem; margin-bottom: 40px; } 
+    .contact-container { flex-direction: column; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
