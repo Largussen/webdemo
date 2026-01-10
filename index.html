@@ -2,18 +2,16 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MODEL KUAFÖR | 1975'den Beri</title>
     
     <link rel="stylesheet" href="style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -29,17 +27,18 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#home" onclick="toggleMenu()">Ana Sayfa</a></li>
-            <li><a href="#services" onclick="toggleMenu()">Hizmetler</a></li>
-            <li><a href="#stats" onclick="toggleMenu()">Hakkımızda</a></li>
-            <li><a href="#gallery" onclick="toggleMenu()">Galeri</a></li>
-            <li><a href="#contact" class="nav-btn" onclick="toggleMenu()">Randevu Al</a></li>
+            <li><a href="#home" onclick="closeMenu()">Ana Sayfa</a></li>
+            <li><a href="#services" onclick="closeMenu()">Hizmetler</a></li>
+            <li><a href="#stats" onclick="closeMenu()">Hakkımızda</a></li>
+            <li><a href="#gallery" onclick="closeMenu()">Galeri</a></li>
+            <li><a href="#contact" class="nav-btn" onclick="closeMenu()">Randevu Al</a></li>
         </ul>
     </nav>
 
     <header id="home">
+        <div class="hero-overlay"></div>
         <div class="hero-content" data-aos="fade-up">
-            <h1>Tarzınız, <span>MODEL</span> Farkıyla.</h1>
+            <h1>Tarzınız, <br><span>MODEL</span> Farkıyla.</h1>
             <p>Yarım asırlık tecrübe, modern dokunuşlar.</p>
             <a href="#contact" class="btn-main">Randevu Oluştur</a>
         </div>
@@ -91,13 +90,13 @@
             <div class="stat-item">
                 <i class="fas fa-star"></i>
                 <h3 class="counter" data-target="100">0</h3>
-                <p>Müşteri Memnuniyeti</p>
+                <p>Memnuniyet</p>
             </div>
         </div>
     </section>
 
     <section id="testimonials" data-aos="fade-up">
-        <h2>Müşterilerimiz Ne Diyor?</h2>
+        <h2>Yorumlar</h2>
         <div class="testimonial-grid">
             
             <div class="testimonial-card">
@@ -117,7 +116,7 @@
             <div class="testimonial-card">
                 <i class="fas fa-quote-right quote-bg"></i>
                 <div class="testimonial-content">
-                    <p>"Damat tıraşım için tercih ettim. İlgi alaka, cilt bakımı ve ikramlar harikaydı. Kendinizi özel hissediyorsunuz."</p>
+                    <p>"Damat tıraşım için tercih ettim. İlgi alaka, cilt bakımı ve ikramlar harikaydı."</p>
                 </div>
                 <div class="client-info">
                     <div class="client-avatar">CE</div>
@@ -148,22 +147,22 @@
     <section id="gallery">
         <h2 data-aos="fade-up">Galeri</h2>
         <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600" alt="Berber 1" data-aos="zoom-in" data-aos-delay="100">
-            <img src="https://images.unsplash.com/photo-1512690459411-b9245aed8ad6?w=600" alt="Berber 2" data-aos="zoom-in" data-aos-delay="200">
-            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Berber 3" data-aos="zoom-in" data-aos-delay="300">
-            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=600" alt="Berber 4" data-aos="zoom-in" data-aos-delay="400">
+            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600" alt="Berber 1" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1512690459411-b9245aed8ad6?w=600" alt="Berber 2" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600" alt="Berber 3" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=600" alt="Berber 4" loading="lazy">
         </div>
     </section>
 
     <section id="contact" data-aos="fade-in">
         <i class="fas fa-calendar-check floating-icon icon-calendar"></i>
 
-        <h2>İletişim & Randevu</h2>
+        <h2>Randevu</h2>
         
         <div class="contact-container">
             <div class="map-wrapper">
                 <iframe src="https://maps.google.com/maps?q=Model+Kuaför+Konya+Selçuklu&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy"></iframe>
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> Konya, Selçuklu (Merkez)</p>
                     <p><i class="fas fa-phone"></i> +90 552 670 72 79</p>
@@ -171,6 +170,7 @@
             </div>
 
             <div class="booking-form">
+                <h3>Randevu Oluştur</h3>
                 <label>İşlem Seçiniz</label>
                 <select id="serviceSelect">
                     <option value="Saç Kesimi">Saç Kesimi</option>
@@ -180,13 +180,18 @@
                     <option value="Damat Tıraşı">Damat Tıraşı</option>
                 </select>
 
-                <label>Tarih Seçiniz</label>
-                <input type="text" id="dateSelect" placeholder="Sistem Bağlanıyor... ⏳" disabled>
-
-                <label>Saat Seçiniz</label>
-                <select id="timeSelect" disabled>
-                    <option value="">Önce tarihi seçiniz</option>
-                </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tarih</label>
+                        <input type="text" id="dateSelect" placeholder="Tarih Seç..." disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Saat</label>
+                        <select id="timeSelect" disabled>
+                            <option value="">Saat..</option>
+                        </select>
+                    </div>
+                </div>
 
                 <label>Adınız Soyadınız</label>
                 <input type="text" id="customerName" placeholder="İsim Soyisim">
