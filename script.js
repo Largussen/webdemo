@@ -1,4 +1,3 @@
-
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxI2L3VSKFkmEyz4UmRUbF3YWxpanyz0QWrb5OJhD6LN1Xn3bZj_4-qkDjoH4vbydMFXw/exec";
 const PHONE_NUMBER = "905526707279"; 
 
@@ -6,7 +5,7 @@ let bookedSlots = [];
 
 window.onload = function() {
     initDatePicker();
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 800, once: true, disable: 'mobile' }); // Mobilde animasyonları kapattım, daha hızlı çalışır
     initCounters();
     
     console.log("Sunucuya bağlanılıyor...");
@@ -15,15 +14,17 @@ window.onload = function() {
         .then(data => {
             bookedSlots = data;
             const dateInput = document.getElementById("dateSelect");
-            dateInput.disabled = false;
-            dateInput.placeholder = "📅 Tarih Seçiniz...";
+            if(dateInput) {
+                dateInput.disabled = false;
+                dateInput.placeholder = "📅 Tarih Seçiniz...";
+            }
         })
         .catch(error => {
             console.error("HATA", error);
-            document.getElementById("dateSelect").placeholder = "Bağlantı Hatası!";
+            const dateInput = document.getElementById("dateSelect");
+            if(dateInput) dateInput.placeholder = "Bağlantı Hatası!";
         });
 };
-
 
 function initCounters() {
     const counters = document.querySelectorAll('.counter');
@@ -39,13 +40,11 @@ function initCounters() {
                 const updateCount = (currentTime) => {
                     const elapsedTime = currentTime - startTime;
                     const progress = Math.min(elapsedTime / animationDuration, 1); 
-
-                   
                     const easeProgress = 1 - Math.pow(1 - progress, 3);
                     const currentNum = Math.floor(easeProgress * target);
                     
-                    if(target === 98) {
-                        counter.innerText = "%" + currentNum;
+                    if(target === 100) { // Yüzde işareti için
+                         counter.innerText = "%" + currentNum;
                     } else {
                         counter.innerText = currentNum + "+";
                     }
@@ -53,23 +52,20 @@ function initCounters() {
                     if (progress < 1) {
                         requestAnimationFrame(updateCount);
                     } else {
-                        if(target === 98) counter.innerText = "%" + target;
+                        if(target === 100) counter.innerText = "%" + target;
                         else counter.innerText = target + "+";
                     }
                 };
-
                 requestAnimationFrame(updateCount);
                 observer.unobserve(counter);
             }
         });
     }, { threshold: 0.5 });
 
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
+    counters.forEach(counter => observer.observe(counter));
 }
 
-
+// Menü İşlemleri
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
@@ -87,7 +83,7 @@ if (menuToggle) {
     });
 }
 
-function toggleMenu() {
+function closeMenu() {
     if (window.innerWidth <= 768) {
         navLinks.classList.remove('active');
         const icon = menuToggle.querySelector('i');
@@ -97,7 +93,6 @@ function toggleMenu() {
         }
     }
 }
-
 
 function initDatePicker() {
     flatpickr("#dateSelect", {
@@ -158,7 +153,6 @@ function updateTimeSlots(selectedDate) {
     }
 }
 
-// wp
 function sendWhatsapp() {
     var name = document.getElementById("customerName").value;
     var service = document.getElementById("serviceSelect").value;
