@@ -1,41 +1,81 @@
-// --- AYARLAR ---
+
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxI2L3VSKFkmEyz4UmRUbF3YWxpanyz0QWrb5OJhD6LN1Xn3bZj_4-qkDjoH4vbydMFXw/exec";
 const PHONE_NUMBER = "905526707279"; 
 
 let bookedSlots = [];
 
-// Sayfa Yüklendiğinde
 window.onload = function() {
     initDatePicker();
+    AOS.init({ duration: 1000, once: true });
+    initCounters();
     
     console.log("Sunucuya bağlanılıyor...");
-    
     fetch(APPS_SCRIPT_URL)
         .then(response => response.json())
         .then(data => {
             bookedSlots = data;
-            console.log("✅ Veri Geldi:", bookedSlots);
-            
-            // Veri gelince kilidi aç
             const dateInput = document.getElementById("dateSelect");
             dateInput.disabled = false;
             dateInput.placeholder = "📅 Tarih Seçiniz...";
         })
         .catch(error => {
-            console.error("HATA:", error);
+            console.error("HATA", error);
             document.getElementById("dateSelect").placeholder = "Bağlantı Hatası!";
         });
 };
 
-// --- MOBİL MENÜ AÇ/KAPA ---
+
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+    const animationDuration = 2000; 
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const startTime = performance.now();
+
+                const updateCount = (currentTime) => {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / animationDuration, 1); 
+
+                   
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentNum = Math.floor(easeProgress * target);
+                    
+                    if(target === 98) {
+                        counter.innerText = "%" + currentNum;
+                    } else {
+                        counter.innerText = currentNum + "+";
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        if(target === 98) counter.innerText = "%" + target;
+                        else counter.innerText = target + "+";
+                    }
+                };
+
+                requestAnimationFrame(updateCount);
+                observer.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+}
+
+
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
-        // İkonu değiştir (Hamburger <-> Çarpı)
         const icon = menuToggle.querySelector('i');
         if (navLinks.classList.contains('active')) {
             icon.classList.remove('fa-bars');
@@ -48,7 +88,6 @@ if (menuToggle) {
 }
 
 function toggleMenu() {
-    // Linke tıklanınca menüyü kapat (Mobildeysek)
     if (window.innerWidth <= 768) {
         navLinks.classList.remove('active');
         const icon = menuToggle.querySelector('i');
@@ -59,7 +98,7 @@ function toggleMenu() {
     }
 }
 
-// --- TAKVİM FONKSİYONLARI ---
+
 function initDatePicker() {
     flatpickr("#dateSelect", {
         dateFormat: "Y-m-d",
@@ -86,9 +125,11 @@ function updateTimeSlots(selectedDate) {
     defaultOption.value = "";
     timeSelect.add(defaultOption);
 
+    const now = new Date();
+    const isToday = (selectedDate === now.toISOString().split('T')[0]);
+
     for (let h = startHour; h < endHour; h++) {
         for (let m = 0; m < 60; m += interval) {
-            
             let hourStr = h.toString().padStart(2, '0');
             let minStr = m.toString().padStart(2, '0');
             let timeStr = hourStr + ":" + minStr;
@@ -103,12 +144,21 @@ function updateTimeSlots(selectedDate) {
                 option.disabled = true; 
                 option.style.color = "#ff4d4d"; 
             }
+
+            if (isToday) {
+                let slotTime = new Date(selectedDate + 'T' + timeStr);
+                if (slotTime < now) {
+                    option.text = timeStr + " (Geçti)";
+                    option.disabled = true;
+                    option.style.color = "#555"; 
+                }
+            }
             timeSelect.add(option);
         }
     }
 }
 
-// --- WHATSAPP GÖNDERME ---
+// wp
 function sendWhatsapp() {
     var name = document.getElementById("customerName").value;
     var service = document.getElementById("serviceSelect").value;
